@@ -96,11 +96,11 @@ Rotated Mask R-CNN is an implementation of Mask R-CNN. Due to bounding box ambig
 
 Figure 8: Mask-RCNN failing bounding box [10]
 
+MaskRCNN takes a bounding box input to output a single foreground (instance) segmentation per class. The hidden assumption here (as is common in many detection networks) is that a good bounding box contains just one object in that class. This is not the case for dense scenes like the pencil image above.
+
 ![rotated_mrcnn_pencils](https://user-images.githubusercontent.com/55101879/66881804-151f0c80-ef96-11e9-8577-085181e56612.png)
  
 Figure 9: Rotated Mask R-CNN implementation [10]
-
-MaskRCNN takes a bounding box input to output a single foreground (instance) segmentation per class. The hidden assumption here (as is common in many detection networks) is that a good bounding box contains just one object in that class. This is not the case for dense scenes like the pencil image above.
 
 Unfortunately, such scenes are underrepresented in the most popular instance segmentation datasets - MSCOCO, Pascal VOC, Cityscapes. Yet they are not uncommon in many real-world applications e.g. robotics/logistics, household objects. As a result, the author of the project released a simple, small dataset called PPC - Pens, Pencils, Chopsticks and show the significant difference between Mask R-CNN and Rotated Mask R-CNN in such scenes. Rotated Mask R-CNN resolves some of these issues by adopting a rotated bounding box representation. [10]
 
