@@ -28,14 +28,6 @@ The system predicts the classes of the bounding box with multilabel classificati
 
 Also take feature maps from earlier in the network and merge it with the up sampled features using concatenation.[1] 
  
-![123123](https://user-images.githubusercontent.com/55101879/66881723-cc675380-ef95-11e9-95c7-688d4791c142.png)
- 
-Figure 3: R-CNN architecture. [2] 
- 
-![1231231212](https://user-images.githubusercontent.com/55101879/66881742-d5f0bb80-ef95-11e9-9165-c5af111ab594.png)
-
-Figure 4: Fast R-CNN architecture. [3] 
-
 With this they get more meaningful semantic information and finer-grained information from the earlier feature map.
 
 YOLOv3 predicts boxes at 3 different scales. Their system uses a similar concept to feature pyramid networks. From the base feature extractor, they add several convolutional layers. Then they take the map from 2 layers previous and up sample it by 2.
@@ -51,27 +43,36 @@ The purpose of R-CNN’s is to solve the problem with bounding box problems. Giv
 
 For an input image, selective search performs the function of generating 2000 different regions that have the possibility to contain an object. This is called extracting region proposals. After this function, the proposals are warped into an image size that can be fed to the trained convolutional neural network, which is AlexNet in this case, that extracts a feature vector for each region. Then this vector is fed to a linear Support Vector Machines to classify the image. Beside this there is also a step to increase the precision of the bounding box with prediction offset values. [2] [5]
 
-<img width="428" alt="2019-10-14 (4)" src="https://user-images.githubusercontent.com/55101879/66881757-e30daa80-ef95-11e9-898b-20871cb9b374.png">
-
-Figure 5: Faster R-CNN is a single, unified network for object detection. The RPN module serves as the ‘attention’ of this unified network. [4]
-
+![123123](https://user-images.githubusercontent.com/55101879/66881723-cc675380-ef95-11e9-95c7-688d4791c142.png)
+ 
+Figure 3: R-CNN architecture. [2] 
+ 
 Even though it may sound good, but there were some side effects of this new model. The network takes a huge amount of time because of the classifying 2000 region proposals per image. Also, it wasn’t good to work in real-time since it takes 47 seconds to test each image. Because of these consequences there was a need for a new model and Fast R-CNN came up.
+
+![1231231212](https://user-images.githubusercontent.com/55101879/66881742-d5f0bb80-ef95-11e9-9165-c5af111ab594.png)
+
+Figure 4: Fast R-CNN architecture. [3] 
+
 
 The same author of the previous paper solved some of the drawbacks to build a faster model and it was called Fast R-CNN. The difference in this algorithm was, instead of feeding the extracted region proposals to the CNN, we feed the input image to the CNN to generate a convolutional feature map. We fed the convolutional feature map to RoI (Region of Interest) pooling layer that returns fixed size squares as the output, so that they can fed to fully connected layers. From the RoI feature vector, there is a softmax function layer to predict the class of the proposed region and the offset values for the bounding boxes. [3]
 
 Both of R-CNN and Fast R-CNN uses selective search which is a slow and time-consuming process that affects the network adversarial.
 
-Faster R-CNN is an object detection system composed of two models. The first module is a deep fully convolutional network that proposes regions, and the second module is the Fast R-CNN detector that uses the proposed regions. The entire system is a single, unified network for object detection (Figure 5).    
- 
-<img width="522" alt="2019-10-15 (2)" src="https://user-images.githubusercontent.com/55101879/66881771-f0c33000-ef95-11e9-8f6a-b2bdac271b19.png">
+<img width="428" alt="2019-10-14 (4)" src="https://user-images.githubusercontent.com/55101879/66881757-e30daa80-ef95-11e9-898b-20871cb9b374.png">
 
-Figure 6: Mask R-CNN network for instance segmentation [8]
+Figure 5: Faster R-CNN is a single, unified network for object detection. The RPN module serves as the ‘attention’ of this unified network. [4]
+
+Faster R-CNN is an object detection system composed of two models. The first module is a deep fully convolutional network that proposes regions, and the second module is the Fast R-CNN detector that uses the proposed regions. The entire system is a single, unified network for object detection (Figure 5).    
 
 Using neural network with ‘attention’ mechanisms, the RPN module tells the Fast R-CNN module where to look enabling easier learning and higher quality. Like Fast R-CNN, the image is provided as an output to a convolutional neural network that provides a convolutional feature map. [4] [6]
 
 # 2.3. Mask R-CNN
 
 Mask R-CNN is conceptually very similar to Faster R-CNN. Faster R-CNN has two outputs for each candidate object, a class label and a bounding box offset. Mask R-CNN has one more branch that is distinct from the other branches. This third branch outputs the object mask on each Region of Interest (RoI), in parallel with other existing branches (Figure 6.) The mask branch is a small FCN applied to each RoI, predicting a segmentation mask in a pixel to pixel manner. 
+
+<img width="522" alt="2019-10-15 (2)" src="https://user-images.githubusercontent.com/55101879/66881771-f0c33000-ef95-11e9-8f6a-b2bdac271b19.png">
+
+Figure 6: Mask R-CNN network for instance segmentation [8]
 
 Mask R-CNN adopts the same two-stage procedure, with an identical first stage (which is RPN). In the second stage, in parallel to predicting the class and box offset, Mask R-CNN also outputs a binary mask for each RoI. This contrasts with most recent systems, where classification depends on mask predictions. Our approach follows the spirit of Fast R-CNN that applies bounding-box classification and regression in parallel.
 
