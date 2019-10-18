@@ -110,6 +110,33 @@ We looked at different object detection frameworks, I think the most convenient 
 # 4. Conclusions
 We looked at different object detection models. Compared them by their architecture, system performance and the implementation styles. More detailed explanation and implementations can be found in references. We can clearly see that in different times there are needs for different edge cases. Most of the models were derived from each other by solving these edge cases. I think the most challenging problem is real-time since autonomous systems make decision based on real-time. The object detection model should be fast to keep up with real-time encounters. Because of these factors I think speed is one of the important aspects of these models. 
 
+# 5. Group 3 Report Summary
+- Jialun Wang
+- Song Zeyu
+- Qing Han
+- Fengxu Tu
+
+# 5.1. Jialun Wang – K-Means Clustering
+The report focuses on K-Means clustering, which is an Unsupervised learning algorithm. Unsupervised learning is a machine learning method which can find patterns in data without given labels. 
+
+I learned there are 2 major analysis methods in Unsupervised learning; Clustering analysis and Dimensionality reduction. K-means clustering is a centroid based algorithm used in clustering analysis. To apply K-Means clustering, we should have same size of clusters, if there are major differences in clusters the K-means could yield wrong result. Also, we need to select an appropriate value of K to get the most out of the method.
+
+# 5.2. Song Zeyu
+The report focuses on object detection models, specifically on R-CNN methods. Report includes analysis and comparison between these models. R-CNN models are region based convolutional neural networks that helps find an object with regions proposal methods. 
+
+From the report there is a clear comparison between models with their architecture and design. From R-CNN to Mask R-CNN, the key component changes between models and the impact of it. We can clearly see the improvements with the steps.
+
+# 5.3. Qing Han
+The report focuses on a specific object detection framework. YOLO is a state-of-the-art, real-time object detection system. On a Pascal Titan X it processes images at 30 FPS and has a mAP of 57.9% on COCO test-dev.
+
+It is shown in the report that YOLO is better in real-time detection compared to other models. There is a pro’s and con’s section that can help you understand the limitations of the model. On top of that, there is a recommendation section that you can understand the applications of the framework.
+
+# 5.4. Fengxu Tu
+The report focuses on a new unsupervised learning method from a paper called “Study on deep unsupervised learning optimization algorithm based on cloud computing. In the report there is an introduction to a CNN-RNN model on cloud computing technology and artificial intelligence technology based on multi-computer cluster for big data analysis. The report studies training results based on BP and Map-Reduce BP. 
+
+The deep unsupervised learning algorithm based on cloud computing increases the efficiency of using neural network. And it is feasible to use cloud computing cluster for unsupervised learning in neural network. But it still has some problems with optimization, so it needs further improvement.
+
+
 # References
 [1] J. Redmon and A. Farhadi. Yolo9000: Better, faster, stronger. In Computer Vision and Pattern Recognition (CVPR), 2017 
 
